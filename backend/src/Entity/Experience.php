@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\ExperienceRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: ExperienceRepository::class)]
 class Experience
@@ -12,21 +13,27 @@ class Experience
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['public'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['public'])]
     private ?string $companyName = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['public'])]
     private ?string $jobTitle = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[Groups(['public'])]
     private ?\DateTime $startDate = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
+    #[Groups(['public'])]
     private ?\DateTime $endDate = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
+    #[Groups(['public'])]
     private ?string $description = null;
 
     public function getId(): ?int
